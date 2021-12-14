@@ -9,6 +9,7 @@ class ConstantColors {
  static Color get greyColor => Color(0xFFE8EAEC);
  static Color get whiteColor => Color(0xFFFFFFFF);
  static Color get textGreyColor => Color(0xFF4A5768);
+ static Color get bottomAppbarGrey => Color(0xFFBABABA);
 
 
 }

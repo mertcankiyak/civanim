@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "885449204971",
+    "project_id": "civanim-6d203",
+    "storage_bucket": "civanim-6d203.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885449204971:android:d8c2b4a495555b85140aae",
+        "android_client_info": {
+          "package_name": "com.mck.civanim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885449204971-k1t4fvos2f3ivd6q2hsph5dghkob5bv4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCc3NMQZ9jOjf9_R0Y9P0x_SzvkCnYJ9og"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885449204971-k1t4fvos2f3ivd6q2hsph5dghkob5bv4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

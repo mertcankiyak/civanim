@@ -1,12 +1,15 @@
 import 'package:civanim/core/constants/colors.dart';
 import 'package:civanim/core/init/theme/theme_notifier.dart';
 import 'package:civanim/core/utils/globals.dart';
+import 'package:civanim/locator.dart';
 import 'package:civanim/view/landing/view/landing_page.dart';
+import 'package:civanim/view/main/home/viewmodel/services_viewmodel.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: ConstantColors.softBlackColor, // navigation bar color
@@ -15,6 +18,8 @@ void main() {
     statusBarIconBrightness:Brightness.dark , //status barIcon Brightness
     systemNavigationBarIconBrightness: Brightness.light, //navigation bar icon
   ));
+  await Firebase.initializeApp();
+  setupLocator();
   runApp(MyApp());
 }
 
@@ -26,6 +31,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ThemeNotifier>(
           create: (context)=>ThemeNotifier(lightTheme),
+        ),
+        ChangeNotifierProvider<ServicesViewModel>(
+          create: (context)=>ServicesViewModel(),
         ),
       ],
       child: MaterialApp(
