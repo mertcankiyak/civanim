@@ -1,7 +1,9 @@
 import 'package:civanim/core/constants/colors.dart';
 import 'package:civanim/core/constants/size.dart';
 import 'package:civanim/core/init/theme/theme_notifier.dart';
+import 'package:civanim/view/main/home/model/doctors_model.dart';
 import 'package:civanim/view/main/home/model/service_model.dart';
+import 'package:civanim/view/main/home/viewmodel/doctors_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/services_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:civanim/core/extensions/size_extension.dart';
+import 'package:civanim/core/extensions/timestamp_extension.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeNotifier>(context).customTheme;
     final _servicesViewModel = Provider.of<ServicesViewModel>(context);
+    final _doctorsViewModel = Provider.of<DoctorsViewModel>(context);
     return GlowingOverscrollIndicator(
       axisDirection: AxisDirection.down,
       color: ConstantColors.softOrangeColor,
@@ -171,22 +175,26 @@ class _HomePageState extends State<HomePage> {
                             child: Column(
                               children: [
                                 Container(
-                                  height: context.getHeight * 0.12,
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          spreadRadius: 1,
-                                          blurRadius: 10,
-                                          offset: Offset(0,
-                                              1), // changes position of shadow
-                                        ),
-                                      ],
-                                      color: ConstantColors.whiteColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(20))),
-                                  child: FadeInImage(placeholder: NetworkImage("https://i.hizliresim.com/9248mhs.gif"), image: NetworkImage(snapshots.data![index].serviceIcon!, scale: 4))
-                                ),
+                                    height: context.getHeight * 0.12,
+                                    decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.2),
+                                            spreadRadius: 1,
+                                            blurRadius: 10,
+                                            offset: Offset(0,
+                                                1), // changes position of shadow
+                                          ),
+                                        ],
+                                        color: ConstantColors.whiteColor,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                    child: FadeInImage(
+                                        placeholder: NetworkImage(
+                                            "https://i.hizliresim.com/9248mhs.gif"),
+                                        image: NetworkImage(
+                                            snapshots.data![index].serviceIcon!,
+                                            scale: 4))),
                                 SizedBox(
                                   height: context.getWidth * 0.03,
                                 ),
@@ -199,122 +207,6 @@ class _HomePageState extends State<HomePage> {
                           );
                         });
 
-                   /* ListView(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        Padding(
-                          padding: context.minimumPadding,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: context.getHeight * 0.12,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                        offset: Offset(
-                                            0, 1), // changes position of shadow
-                                      ),
-                                    ],
-                                    color: ConstantColors.whiteColor,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: Image.asset(
-                                  "assets/images/coronavirus.png",
-                                  scale: 4,
-                                ),
-                              ),
-                              SizedBox(
-                                height: context.getWidth * 0.03,
-                              ),
-                              Text(
-                                "Corona",
-                                style: theme.themeData!.textTheme.headline2,
-                              ),
-                            ],
-                          ),
-                        ),
-                        /* Padding(
-                          padding: context.minimumPadding,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: context.getHeight*0.12,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                        offset: Offset(0, 1), // changes position of shadow
-                                      ),
-                                    ],
-                                    color: ConstantColors.whiteColor,
-                                    borderRadius: BorderRadius.all(Radius.circular(20))
-                                ),
-                                child: Image.asset("assets/images/coronavirus.png", scale: 4,),
-                              ),
-                              SizedBox(height: context.getWidth*0.03,),
-                              Text("Corona", style: theme.themeData!.textTheme.headline2,),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: context.minimumPadding,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: context.getHeight*0.12,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                        offset: Offset(0, 1), // changes position of shadow
-                                      ),
-                                    ],
-                                    color: ConstantColors.whiteColor,
-                                    borderRadius: BorderRadius.all(Radius.circular(20))
-                                ),
-                                child: Image.asset("assets/images/coronavirus.png", scale: 4,),
-                              ),
-                              SizedBox(height: context.getWidth*0.03,),
-                              Text("Corona", style: theme.themeData!.textTheme.headline2,),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: context.minimumPadding,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: context.getHeight*0.12,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.2),
-                                        spreadRadius: 1,
-                                        blurRadius: 10,
-                                        offset: Offset(0, 1), // changes position of shadow
-                                      ),
-                                    ],
-                                    color: ConstantColors.whiteColor,
-                                    borderRadius: BorderRadius.all(Radius.circular(20))
-                                ),
-                                child: Image.asset("assets/images/coronavirus.png", scale: 4,),
-                              ),
-                              SizedBox(height: context.getWidth*0.03,),
-                              Text("Corona", style: theme.themeData!.textTheme.headline2,),
-                            ],
-                          ),
-                        ),*/
-                      ],
-                    );*/
                   } else {
                     return CircularProgressIndicator();
                   }
@@ -330,143 +222,166 @@ class _HomePageState extends State<HomePage> {
             style: theme.themeData!.textTheme.headline6,
           ),
           Container(
-            height: context.getHeight * 0.2,
+            height: context.getHeight * 0.23,
             child: GlowingOverscrollIndicator(
               axisDirection: AxisDirection.right,
               color: ConstantColors.softOrangeColor,
-              child: ListView(
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Padding(
-                    padding: context.spesificPadding(SizeConstants.mediumSize,
-                        0, 0, SizeConstants.minimumSize),
-                    child: Container(
-                      width: context.getWidth * 0.8,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                              offset:
-                                  Offset(0, 1), // changes position of shadow
-                            ),
-                          ],
-                          color: ConstantColors.whiteColor,
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Padding(
-                            padding: context.mediumSymetricPadding,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                      "https://toppng.com//public/uploads/preview/doctor-png-115539657696wynrkvdhh.png"),
-                                  backgroundColor: ConstantColors.greyColor,
-                                  radius: 30,
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Dr. Mert Can Kıyak",
-                                        style: theme
-                                            .themeData!.textTheme.headline6,
-                                      ),
-                                      Text(
-                                        "Kalp Cerrahı",
-                                        style: theme
-                                            .themeData!.textTheme.headline5,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: context.mediumSymetricPadding,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          spreadRadius: 1,
-                                          blurRadius: 10,
-                                          offset: Offset(0,
-                                              1), // changes position of shadow
-                                        ),
-                                      ],
-                                      color: ConstantColors.greyColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  child: Padding(
-                                    padding: context.minimumSymetricPadding,
+              child: FutureBuilder(
+                future: _doctorsViewModel.getDoctorsList(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<DoctorsModel>> snapshots) {
+                  if (snapshots.hasData) {
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: snapshots.data!.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: context.spesificPadding(
+                                SizeConstants.mediumSize,
+                                SizeConstants.minimumSize,
+                                SizeConstants.minimumSize,
+                                SizeConstants.minimumSize),
+                            child: Container(
+                              width: context.getWidth * 0.8,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 10,
+                                      offset: Offset(
+                                          0, 1), // changes position of shadow
+                                    ),
+                                  ],
+                                  color: ConstantColors.whiteColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: context.mediumSymetricPadding,
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
-                                        Icon(Icons.male),
-                                        Text(
-                                          "Erkek",
-                                          style: theme
-                                              .themeData!.textTheme.bodyText1,
+                                        CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                              snapshots.data![index].doctorFoto!),
+                                          backgroundColor:
+                                              ConstantColors.greyColor,
+                                          radius: 30,
+                                        ),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                snapshots.data![index].doctorName! +" "+ snapshots.data![index].doctorSoyadi!,
+                                                style: theme.themeData!
+                                                    .textTheme.headline6,
+                                              ),
+                                              Text(
+                                                snapshots.data![index].doctorUzmanlik!,
+                                                style: theme.themeData!
+                                                    .textTheme.headline5,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
-                                Container(),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          spreadRadius: 1,
-                                          blurRadius: 10,
-                                          offset: Offset(0,
-                                              1), // changes position of shadow
-                                        ),
-                                      ],
-                                      color: ConstantColors.greyColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10))),
-                                  child: Padding(
-                                    padding: context.minimumSymetricPadding,
+                                  Padding(
+                                    padding: context.mediumSymetricPadding,
                                     child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Icon(Icons.date_range),
-                                        Text(
-                                          "68 Yaşında",
-                                          style: theme
-                                              .themeData!.textTheme.bodyText1,
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.2),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 10,
+                                                  offset: Offset(0,
+                                                      1), // changes position of shadow
+                                                ),
+                                              ],
+                                              color: ConstantColors.greyColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10))),
+                                          child: Padding(
+                                            padding:
+                                                context.minimumSymetricPadding,
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.male),
+                                                Text(
+                                                  snapshots.data![index].doctorCinsiyet!,
+                                                  style: theme.themeData!
+                                                      .textTheme.bodyText1,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Container(),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Colors.grey
+                                                      .withOpacity(0.2),
+                                                  spreadRadius: 1,
+                                                  blurRadius: 10,
+                                                  offset: Offset(0,
+                                                      1), // changes position of shadow
+                                                ),
+                                              ],
+                                              color: ConstantColors.greyColor,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10))),
+                                          child: Padding(
+                                            padding:
+                                                context.minimumSymetricPadding,
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.date_range),
+                                                Text(
+                                                  snapshots.data![index].doctorDate.yasHesapla,
+                                                  style: theme.themeData!
+                                                      .textTheme.bodyText1,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                          );
+                        });
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
               ),
             ),
           ),
+          SizedBox(height: 50,),
         ],
       ),
     );
