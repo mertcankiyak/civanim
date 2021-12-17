@@ -3,6 +3,7 @@ import 'package:civanim/core/init/theme/theme_notifier.dart';
 import 'package:civanim/core/utils/globals.dart';
 import 'package:civanim/locator.dart';
 import 'package:civanim/view/landing/view/landing_page.dart';
+import 'package:civanim/view/main/article/viewmodel/article_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/doctors_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/services_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<DoctorsViewModel>(
           create: (context)=>DoctorsViewModel(),
+        ),
+        ChangeNotifierProvider<ArticleViewModel>(
+          create: (context)=>ArticleViewModel(),
         ),
       ],
       child: MaterialApp(
