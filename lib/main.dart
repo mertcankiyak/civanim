@@ -47,7 +47,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Civanım',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.deepOrange,
+          primaryColor: ConstantColors.softOrangeColor,
         ),
         home: MyFirstPage(),
       ),

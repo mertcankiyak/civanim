@@ -6,6 +6,7 @@ class DoctorsModel{
   Timestamp? doctorDate;
   String? doctorFoto;
   String? doctorId;
+  String? servisId;
   bool? doctorMusait;
   String? doctorSoyadi;
   String? doctorTel;
@@ -18,6 +19,7 @@ class DoctorsModel{
         doctorDate = map['doktor_dt'],
         doctorFoto = map['doktor_foto'],
         doctorId = map['doktor_id'],
+        servisId = map['servis_id'],
         doctorMusait = map['doktor_musait'],
         doctorSoyadi = map['doktor_soyadi'],
         doctorTel = map['doktor_tel'],
