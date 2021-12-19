@@ -17,68 +17,72 @@ class ArticlePage extends StatelessWidget {
         future: _articleViewModel.getArticleList(),
         builder: (BuildContext context,
             AsyncSnapshot<List<ArticleModel>> snapshots) {
-          return ListView.builder(
-              itemCount: snapshots.data!.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(SizeConstants.mediumSize),
-                  ),
-                  margin: context.spesificPadding(
-                      SizeConstants.minimumSize,
-                      SizeConstants.minimumSize,
-                      SizeConstants.minimumSize,
-                      SizeConstants.minimumSize),
-                  elevation: 3,
-                  child: ListTile(
-                    onTap: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ArticleDetayPage(
-                                  articleModel: snapshots.data![index])));
-                    },
-                    contentPadding: context.minimumPadding,
-                    title: Text(
-                      snapshots.data![index].makaleBaslik!,
-                      style: _theme!.themeData!.textTheme.bodyText2,
+          if(snapshots.hasData){
+            return ListView.builder(
+                itemCount: snapshots.data!.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                      BorderRadius.circular(SizeConstants.mediumSize),
                     ),
-                    subtitle: Text(snapshots.data![index].makaleIcerik!,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: _theme.themeData!.textTheme.headline2),
-                    leading: ClipRRect(borderRadius: BorderRadius.all(
-                      Radius.circular(
+                    margin: context.spesificPadding(
                         SizeConstants.minimumSize,
+                        SizeConstants.minimumSize,
+                        SizeConstants.minimumSize,
+                        SizeConstants.minimumSize),
+                    elevation: 3,
+                    child: ListTile(
+                      onTap: (){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ArticleDetayPage(
+                                    articleModel: snapshots.data![index])));
+                      },
+                      contentPadding: context.minimumPadding,
+                      title: Text(
+                        snapshots.data![index].makaleBaslik!,
+                        style: _theme!.themeData!.textTheme.bodyText2,
                       ),
-                    ),child: Image.network(snapshots.data![index].makaleFoto!, fit: BoxFit.cover,)),
-                    trailing: Container(
-                      decoration: BoxDecoration(
-                        borderRadius:
-                        BorderRadius.circular(SizeConstants.maximumSize),
-                        color: ConstantColors.softOrangeColor,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // changes position of shadow
+                      subtitle: Text(snapshots.data![index].makaleIcerik!,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: _theme.themeData!.textTheme.headline2),
+                      leading: ClipRRect(borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          SizeConstants.minimumSize,
+                        ),
+                      ),child: Image.network(snapshots.data![index].makaleFoto!, fit: BoxFit.cover,)),
+                      trailing: Container(
+                        decoration: BoxDecoration(
+                          borderRadius:
+                          BorderRadius.circular(SizeConstants.maximumSize),
+                          color: ConstantColors.softOrangeColor,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            snapshots.data![index].makaleKategori!,
+                            style: _theme.themeData!.textTheme.headline4,
                           ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          snapshots.data![index].makaleKategori!,
-                          style: _theme.themeData!.textTheme.headline4,
                         ),
                       ),
                     ),
-                  ),
-                );
-              });
+                  );
+                });
+          }else{
+            return CircularProgressIndicator();
+          }
         });
   }
 }

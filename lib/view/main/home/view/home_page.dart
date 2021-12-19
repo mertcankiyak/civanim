@@ -1,6 +1,7 @@
 import 'package:civanim/core/constants/colors.dart';
 import 'package:civanim/core/constants/size.dart';
 import 'package:civanim/core/init/theme/theme_notifier.dart';
+import 'package:civanim/view/authenticate/login/viewmodel/login_viewmodel.dart';
 import 'package:civanim/view/main/home/model/doctors_model.dart';
 import 'package:civanim/view/main/home/model/service_model.dart';
 import 'package:civanim/view/main/home/viewmodel/doctors_viewmodel.dart';
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     final theme = Provider.of<ThemeNotifier>(context).customTheme;
     final _servicesViewModel = Provider.of<ServicesViewModel>(context);
     final _doctorsViewModel = Provider.of<DoctorsViewModel>(context);
+    final _loginViewModel = Provider.of<LoginViewModel>(context);
     return GlowingOverscrollIndicator(
       axisDirection: AxisDirection.down,
       color: ConstantColors.softOrangeColor,
@@ -31,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         padding: context.mediumPadding,
         children: [
           Text(
-            "Merhaba, Mert!",
+            "Merhaba, "+(_loginViewModel.registerFirestoreModel.name ?? "") ,
             style: theme!.themeData!.textTheme.headline1,
           ),
           SizedBox(

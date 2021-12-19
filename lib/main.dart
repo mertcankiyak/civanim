@@ -2,6 +2,8 @@ import 'package:civanim/core/constants/colors.dart';
 import 'package:civanim/core/init/theme/theme_notifier.dart';
 import 'package:civanim/core/utils/globals.dart';
 import 'package:civanim/locator.dart';
+import 'package:civanim/view/authenticate/login/viewmodel/login_viewmodel.dart';
+import 'package:civanim/view/authenticate/register/viewmodel/register_viewmodel.dart';
 import 'package:civanim/view/landing/view/landing_page.dart';
 import 'package:civanim/view/main/article/viewmodel/article_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/doctors_viewmodel.dart';
@@ -42,6 +44,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ArticleViewModel>(
           create: (context)=>ArticleViewModel(),
+        ),
+        ChangeNotifierProvider<LoginViewModel>(
+          create: (context)=>LoginViewModel(),
+        ),
+        ChangeNotifierProvider<RegisterViewModel>(
+          create: (context)=>RegisterViewModel(),
         ),
       ],
       child: MaterialApp(

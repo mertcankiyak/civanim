@@ -10,8 +10,9 @@ class RadiusTextFormField extends StatelessWidget {
   final TextEditingController? textEditingController;
   final FormFieldValidator<String>? validator;
   final bool obsecureText;
+  final VoidCallback? onTap;
 
-  RadiusTextFormField({required this.hintText, required this.icon, required this.textEditingController, this.validator, this.obsecureText=false});
+  RadiusTextFormField({required this.hintText, required this.icon, required this.textEditingController, this.validator, this.obsecureText=false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +37,15 @@ class RadiusTextFormField extends StatelessWidget {
       child: Padding(
         padding: context.spesificPadding(5, 5, 20, 0),
         child: TextFormField(
+          onTap: onTap,
+          style: _theme!.themeData!.textTheme.headline2,
           obscureText: obsecureText,
           validator: validator,
           controller: textEditingController,
           decoration: InputDecoration(
               suffixIcon: icon,
               hintText: hintText,
-              hintStyle: _theme!.themeData!.textTheme.headline5,
+              hintStyle: _theme.themeData!.textTheme.headline5,
               border: InputBorder.none,
               fillColor: Colors.grey,
               focusColor: Colors.grey),
