@@ -2,9 +2,9 @@ import 'package:civanim/core/constants/colors.dart';
 import 'package:civanim/core/init/theme/theme_notifier.dart';
 import 'package:civanim/view/main/article/view/article_page.dart';
 import 'package:civanim/view/main/call/view/call_page.dart';
+import 'package:civanim/view/main/corona/view/corona_page.dart';
 import 'package:civanim/view/main/home/view/home_page.dart';
 import 'package:civanim/view/main/profile/view/profile_page.dart';
-import 'package:civanim/view/main/settings/view/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +19,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   ArticlePage? _articlePage;
   CallPage? _callPage;
   ProfilePage? _profilePage;
-  SettingsPage? _settingsPage;
+  CoronaPage? _coronaPage;
   List<Widget>? sayfalarim;
 
   @override
@@ -30,7 +30,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     _articlePage = ArticlePage();
     _callPage = CallPage();
     _profilePage = ProfilePage();
-    _settingsPage = SettingsPage();
+    _coronaPage = CoronaPage();
   }
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             _homePage!,
             _articlePage!,
             _profilePage!,
-            _settingsPage!,
+            _coronaPage!,
           ],
           index: selectedItem.selectedItemIndex,
         ),
@@ -115,7 +115,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                             selectedItem.selectedItemIndex = 3;
                             selectedItem.selectedItemText = "Ayarlar";
                           });
-                        }, icon:Icon(Icons.settings, size: 30, color: selectedItem.selectedItemIndex == 3 ? ConstantColors.softBlackColor : ConstantColors.bottomAppbarGrey,),
+                        }, icon:Icon(Icons.coronavirus, size: 30, color: selectedItem.selectedItemIndex == 3 ? ConstantColors.softBlackColor : ConstantColors.bottomAppbarGrey,),
                         ),
                       ],
                     ),

@@ -6,6 +6,7 @@ import 'package:civanim/view/authenticate/login/viewmodel/login_viewmodel.dart';
 import 'package:civanim/view/authenticate/register/viewmodel/register_viewmodel.dart';
 import 'package:civanim/view/landing/view/landing_page.dart';
 import 'package:civanim/view/main/article/viewmodel/article_viewmodel.dart';
+import 'package:civanim/view/main/corona/viewmodel/corona_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/doctors_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/services_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -50,6 +51,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<RegisterViewModel>(
           create: (context)=>RegisterViewModel(),
+        ),
+        ChangeNotifierProvider<CoronaViewModel>(
+          create: (context)=>CoronaViewModel(),
         ),
       ],
       child: MaterialApp(
