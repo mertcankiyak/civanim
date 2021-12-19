@@ -26,7 +26,7 @@ CustomTheme lightTheme = CustomTheme(
       headline6: TextStyle(color: ConstantColors.softBlackColor,fontWeight: FontWeight.bold, fontSize: 20,fontFamily: GoogleFonts.ubuntu().fontFamily),
       bodyText1: TextStyle(color: ConstantColors.softBlackColor, fontSize: 15,fontFamily: GoogleFonts.ubuntu().fontFamily),
       bodyText2: TextStyle(color: ConstantColors.softBlackColor, fontSize: 16, fontWeight: FontWeight.bold,fontFamily: GoogleFonts.ubuntu().fontFamily),
-
+      subtitle1:  TextStyle(color: ConstantColors.whiteColor, fontSize: 16,fontWeight: FontWeight.bold,fontFamily: GoogleFonts.ubuntu().fontFamily),
   ),
     appBarTheme: AppBarTheme(backgroundColor: Color(0xff1e2027)),
     //colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),

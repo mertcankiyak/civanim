@@ -11,7 +11,7 @@ class RoundedButton extends StatelessWidget {
   final Icon? icon;
   final VoidCallback? onTap;
 
-  RoundedButton({@required this.text, @required this.splashColor,@required this.backgroundColor,@required this.icon,@required this.onTap});
+  RoundedButton({ @required this.text, @required this.splashColor,@required this.backgroundColor,@required this.icon,@required this.onTap});
 
   @override
   Widget build(BuildContext context) {
