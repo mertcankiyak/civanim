@@ -1,6 +1,7 @@
 import 'package:civanim/view/authenticate/login/service/login_service.dart';
 import 'package:civanim/view/authenticate/register/service/register_service.dart';
 import 'package:civanim/view/main/article/service/article_service.dart';
+import 'package:civanim/view/main/chat/service/chat_service.dart';
 import 'package:civanim/view/main/corona/service/corona_service.dart';
 import 'package:civanim/view/main/home/services/doctors_service.dart';
 import 'package:civanim/view/main/home/services/services_service.dart';
@@ -17,4 +18,5 @@ setupLocator(){
   locator.registerLazySingleton(() => RegisterService());
   locator.registerLazySingleton(() => CoronaService());
   locator.registerLazySingleton(() => ProfileService());
+  locator.registerLazySingleton(() => ChatServices());
 }

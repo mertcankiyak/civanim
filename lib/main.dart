@@ -6,6 +6,7 @@ import 'package:civanim/view/authenticate/login/viewmodel/login_viewmodel.dart';
 import 'package:civanim/view/authenticate/register/viewmodel/register_viewmodel.dart';
 import 'package:civanim/view/landing/view/landing_page.dart';
 import 'package:civanim/view/main/article/viewmodel/article_viewmodel.dart';
+import 'package:civanim/view/main/chat/viewmodel/chat_viewmodel.dart';
 import 'package:civanim/view/main/corona/viewmodel/corona_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/doctors_viewmodel.dart';
 import 'package:civanim/view/main/home/viewmodel/services_viewmodel.dart';
@@ -58,6 +59,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ProfileViewModel>(
           create: (context)=>ProfileViewModel(),
+        ),
+        ChangeNotifierProvider<ChatViewModel>(
+          create: (context)=>ChatViewModel(),
         ),
       ],
       child: MaterialApp(

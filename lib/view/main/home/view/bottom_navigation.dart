@@ -1,7 +1,7 @@
 import 'package:civanim/core/constants/colors.dart';
 import 'package:civanim/core/init/theme/theme_notifier.dart';
 import 'package:civanim/view/main/article/view/article_page.dart';
-import 'package:civanim/view/main/call/view/call_page.dart';
+import 'package:civanim/view/main/chat/view/chat_page.dart';
 import 'package:civanim/view/main/corona/view/corona_page.dart';
 import 'package:civanim/view/main/home/view/home_page.dart';
 import 'package:civanim/view/main/profile/view/profile_page.dart';
@@ -17,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   SelectedItem selectedItem = SelectedItem();
   HomePage? _homePage;
   ArticlePage? _articlePage;
-  CallPage? _callPage;
+  ChatPage? _callPage;
   ProfilePage? _profilePage;
   CoronaPage? _coronaPage;
   List<Widget>? sayfalarim;
@@ -28,7 +28,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     super.initState();
     _homePage = HomePage();
     _articlePage = ArticlePage();
-    _callPage = CallPage();
+    _callPage = ChatPage();
     _profilePage = ProfilePage();
     _coronaPage = CoronaPage();
   }
@@ -49,7 +49,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
           index: selectedItem.selectedItemIndex,
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatPage()));
+          },
           child: const Icon(Icons.call),
           backgroundColor: ConstantColors.softBlackColor,
           elevation: 5,
