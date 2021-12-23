@@ -17,4 +17,13 @@ class DoctorsViewModel with ChangeNotifier implements DoctorsBASE{
     }
   }
 
+  @override
+  Future<List<DoctorsModel>> servislerdekiDoktorlariGetir({String? servisID}) async {
+    try{
+      return await _doctorsService.servislerdekiDoktorlariGetir(servisID: servisID);
+    }catch(e){
+      throw "servislerdekiDoktorlariGetir Hata: "+ e.toString();
+    }
+  }
+
 }

@@ -12,6 +12,7 @@ class DoctorsModel{
   String? doctorTel;
   String? doctorUzmanlik;
   String? doctorCinsiyet;
+  String? doktorBilgi;
 
 
   DoctorsModel.fromMap(Map<String, dynamic> map):
@@ -24,6 +25,7 @@ class DoctorsModel{
         doctorSoyadi = map['doktor_soyadi'],
         doctorTel = map['doktor_tel'],
         doctorCinsiyet = map['doktor_cinsiyet'],
+        doktorBilgi = map['doktor_bilgi'],
         doctorUzmanlik = map['doktor_uzmanlik'];
 
 }

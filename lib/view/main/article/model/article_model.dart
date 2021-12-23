@@ -18,4 +18,6 @@ class ArticleModel{
         makaleKategori = map['makale_kategori'],
         makaleFoto = map['makale_foto'];
 
+  ArticleModel({this.makaleId, this.makaleBaslik, this.makaleIcerik,
+      this.makaleTarih, this.makaleKategori, this.makaleFoto});
 }

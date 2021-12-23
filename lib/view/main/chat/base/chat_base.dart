@@ -6,7 +6,7 @@ abstract class ChatBase {
   Future<List<Chat>> sohbetOdalariniListele(String kullaniciAdi);
   Stream<List<Mesaj>> mesajlariGetir(String chatOdasi);
   Future<bool> mesajGonder(String mesaj, String gonderenKullaniciAdi, String chatOdasi);
-  Future<String> sohbetOdasiOlustur(String chatOdasi, List<String> kisiler, String ilanAdi, String ilanAdres, String ilanFoto, int ilanID);
+  Future<String> sohbetOdasiOlustur(String chatOdasi, List<String> kisiler, String doktorAdi, String doktorUzmanlik, String doktorFoto, String sohbetOdasiID, String kullaniciID);
   Future<bool> sohbetOdasiniSil(String sohbetOdasiAdi);
   Future<bool> bildirimGonder(String FCMToken, String dataTitle, String gonderilenMesaj, String kimden);
   Future<String> FCMTokenSorgula(String kullaniciAdi);

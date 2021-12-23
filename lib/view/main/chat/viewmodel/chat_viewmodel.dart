@@ -27,8 +27,8 @@ class ChatViewModel with ChangeNotifier implements ChatBase{
   }
 
   @override
-  Future<String> sohbetOdasiOlustur(String chatOdasi, List<String> kisiler, String ilanAdi, String ilanAdres, String ilanFoto, int ilanID) async {
-    return await _chatServices.sohbetOdasiOlustur(chatOdasi, kisiler, ilanAdi, ilanAdres, ilanFoto, ilanID);
+  Future<String> sohbetOdasiOlustur(String chatOdasi, List<String> kisiler, String doktorAdi, String doktorUzmanlik, String doktorFoto, String sohbetOdasiID,String kullaniciID) async {
+    return await _chatServices.sohbetOdasiOlustur(chatOdasi, kisiler, doktorAdi, doktorUzmanlik, doktorFoto, sohbetOdasiID,kullaniciID);
   }
 
   @override

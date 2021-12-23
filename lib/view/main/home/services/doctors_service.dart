@@ -17,4 +17,14 @@ class DoctorsService implements DoctorsBASE{
     return _doctorsList;
   }
 
+  @override
+  Future<List<DoctorsModel>> servislerdekiDoktorlariGetir({String? servisID}) async {
+    List<DoctorsModel> _doctorsList = [];
+    QuerySnapshot<Map<String,dynamic>> doctorsSorgula = await  _firebaseFirestore.collection("doktorlar").where("servis_id", isEqualTo: servisID).get();
+    doctorsSorgula.docs.forEach((element) {
+      _doctorsList.add(DoctorsModel.fromMap(element.data()));
+    });
+    return _doctorsList;
+  }
+
 }

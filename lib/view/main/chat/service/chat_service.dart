@@ -61,13 +61,12 @@ class ChatServices implements ChatBase {
   }
 
   @override
-  Future<String> sohbetOdasiOlustur(String chatOdasi, List<String> kisiler,
-      String ilanAdi, String ilanAdres, String ilanFoto, int ilanID) async {
+  Future<String> sohbetOdasiOlustur(String chatOdasi, List<String> kisiler, String doktorAdi, String doktorUzmanlik, String doktorFoto, String sohbetOdasiID, String kullaniciID) async {
     try{
       var sohbetOdasiSorgula = await firestore
           .collection("sohbet")
-          .where("ilanID", isEqualTo: ilanID)
-          .where("kisiler", arrayContains: "bymuslera")
+          .where("sohbetOdasiID", isEqualTo: sohbetOdasiID)
+          .where("kisiler", arrayContains: kullaniciID)
           .get();
       debugPrint("Firebase kişiler listesi 1: "+sohbetOdasiSorgula.docs[0].data()["kisiler"][0]);
       debugPrint("Firebase kişiler listesi 1: "+sohbetOdasiSorgula.docs[0].data()["kisiler"][1]);
@@ -81,19 +80,18 @@ class ChatServices implements ChatBase {
 
         var sohbetOdasiSorgula2 = await firestore
             .collection("sohbet")
-            .where("sohbetOdasiAdi", isEqualTo: sohbetOdasiSorgula.docs[0].data()["sohbetOdasiAdi"])
+            .where("sohbetOdasiID", isEqualTo: sohbetOdasiSorgula.docs[0].data()["sohbetOdasiID"])
             .get();
 
-        return sohbetOdasiSorgula2.docs[0].data()["sohbetOdasiAdi"];
+        return sohbetOdasiSorgula2.docs[0].data()["sohbetOdasiID"];
       }else{
         debugPrint("Sohbet odası yeni oluşturuldu.");
         await firestore.collection("sohbet").doc(chatOdasi).set({
-          'ilanAdi': ilanAdi,
-          'ilanAdres': ilanAdres,
-          'ilanFoto': "http://192.168.1.5:1337" + ilanFoto,
+          'doktorAdi': doktorAdi,
+          'doktorFoto': doktorFoto,
+          'doktorUzmanlik': doktorUzmanlik,
           'kisiler': kisiler,
-          'ilanID': ilanID,
-          'sohbetOdasiAdi': chatOdasi,
+          'sohbetOdasiID': sohbetOdasiID,
         }).then((value) => debugPrint("Sohbet odası eklendi."));
 
         return chatOdasi;
@@ -101,12 +99,11 @@ class ChatServices implements ChatBase {
     }catch (e){
       debugPrint("Sohbet odası yeni oluşturuldu.");
       await firestore.collection("sohbet").doc(chatOdasi).set({
-        'ilanAdi': ilanAdi,
-        'ilanAdres': ilanAdres,
-        'ilanFoto': "http://192.168.1.5:1337" + ilanFoto,
+        'doktorAdi': doktorAdi,
+        'doktorFoto': doktorFoto,
+        'doktorUzmanlik': doktorUzmanlik,
         'kisiler': kisiler,
-        'ilanID': ilanID,
-        'sohbetOdasiAdi': chatOdasi,
+        'sohbetOdasiID': sohbetOdasiID,
       }).then((value) => debugPrint("Sohbet odası eklendi."));
 
       return chatOdasi;
